@@ -4,10 +4,12 @@ Baixe e abra o arquivo snake.asm no MARS.
 Abra o Bitmap Display em Tools, clique em Connect to MIPS e defina:
 Unit Width in Pixels para 8
 Unit Height in Pixels para 8
+
 <img width="408" height="231" alt="image" src="https://github.com/user-attachments/assets/e5e6359e-3bf9-429d-901f-0bf73cf439d5" />
 
 Abra o Keyboard and Display MMIO Simulator em Tools e clique em Connect to MIPS.
 Clique no espaço branco de baixo para usar o teclado.
+
 <img width="877" height="775" alt="image" src="https://github.com/user-attachments/assets/bfa43e34-dd17-42bf-9802-b1bf40e16333" />
 
 Execute o programa para começar a jogar! Use WASD para mover. Observe que, na posição inicial, a cobra está indo para a direita, então você não pode se mover para a esquerda.
@@ -15,15 +17,28 @@ Execute o programa para começar a jogar! Use WASD para mover. Observe que, na p
 ## Mecânicas do jogo ##
 Entropia Progressiva (Risco): Ao consumir o alimento padrão (Vermelho) 🍎, há 25% de chance de um obstáculo permanente (Cinza) ser gerado aleatoriamente no mapa, tornando o cenário progressivamente mais complexo e "sujo".
 
+<img width="889" height="484" alt="image" src="https://github.com/user-attachments/assets/0a81eb2d-4cb1-41f6-ab99-4e0e0437d5e3" />
+
+
 Power-up de Controle (Laranja): Reduz temporariamente a velocidade de atualização do game loop (efeito slow motion), permitindo manobras de precisão em cenários densos. A velocidade é restaurada gradualmente.
 
 Power-up de Invencibilidade (Magenta): Altera o estado da cobra (cabeça branca), permitindo que ela atravesse e destrua obstáculos, paredes e o próprio corpo, servindo como uma ferramenta estratégica de limpeza do mapa.
+
+<img width="853" height="488" alt="image" src="https://github.com/user-attachments/assets/96594e10-4043-419c-9f4b-71503058e3ea" />
+
+Caso você acabe comendo seu próprio corpo enquanto estiver no efeito do power-up magenta, a parte será desconectada de seu corpo e funcionara como mais um obstáculo
+
+<img width="755" height="483" alt="image" src="https://github.com/user-attachments/assets/8fa3112a-fcb7-4bef-91aa-ba2f68f83fe6" />
+
+
 
 ## A Lógica da pontuação ##
 
 🍎 Comida Normal (Vermelho): +10 Pontos
 
 É a pontuação base. O jogador ganha pontos moderados, mas "paga" o preço aumentando o risco (cria obstáculos e aumenta o corpo).
+
+<img width="743" height="486" alt="image" src="https://github.com/user-attachments/assets/d7ce1e52-02ae-439e-9d95-8180c51b5111" />
 
 🍊 Power-up de Lentidão (Laranja): +5 Pontos
 
@@ -32,3 +47,5 @@ Por que vale menos? Porque é um item de ajuda. Ele facilita o jogo deixando tud
 🌟 Power-up de Estrela (Magenta): +50 Pontos
 
 Por que vale tanto? É o "Jackpot". Além de ser rara (15% de chance), ela incentiva o jogador a limpar o mapa agressivamente. É a recompensa máxima.
+<img width="916" height="481" alt="image" src="https://github.com/user-attachments/assets/6eb502f8-4715-438c-8f29-f3e3a12dd18f" />
+
