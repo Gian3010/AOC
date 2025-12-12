@@ -22,6 +22,8 @@ Entropia Progressiva (Risco): Ao consumir o alimento padrão (Vermelho) 🍎, h�
 
 Power-up de Controle (Laranja): Reduz temporariamente a velocidade de atualização do game loop (efeito slow motion), permitindo manobras de precisão em cenários densos. A velocidade é restaurada gradualmente.
 
+<img width="637" height="314" alt="image" src="https://github.com/user-attachments/assets/71d140b7-1a15-4026-ad35-032c81633c17" />
+
 Power-up de Invencibilidade (Magenta): Altera o estado da cobra (cabeça branca), permitindo que ela atravesse e destrua obstáculos, paredes e o próprio corpo, servindo como uma ferramenta estratégica de limpeza do mapa.
 
 <img width="853" height="488" alt="image" src="https://github.com/user-attachments/assets/96594e10-4043-419c-9f4b-71503058e3ea" />
@@ -43,6 +45,8 @@ Caso você acabe comendo seu próprio corpo enquanto estiver no efeito do power-
 🍊 Power-up de Lentidão (Laranja): +5 Pontos
 
 Por que vale menos? Porque é um item de ajuda. Ele facilita o jogo deixando tudo em câmera lenta. O "pagamento" aqui é ganhar menos pontos em troca de sobrevivência.
+
+<img width="786" height="382" alt="image" src="https://github.com/user-attachments/assets/38e38441-00e5-4212-874a-8bebeddd3fac" />
 
 🌟 Power-up de Estrela (Magenta): +50 Pontos
 
