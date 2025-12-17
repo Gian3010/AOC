@@ -43,10 +43,11 @@ Por que vale tanto? É o "Jackpot". Além de ser rara (15% de chance), ela incen
 <img width="640" height="313" alt="image" src="https://github.com/user-attachments/assets/6514c393-00b1-4607-8fd6-824eb94addcf" />
 
 
-Caso você acabe comendo seu próprio corpo enquanto estiver no efeito do power-up magenta, a parte será desconectada de seu corpo e funcionara como mais um obstáculo
+Caso você acabe comendo seu próprio corpo enquanto estiver no efeito do power-up amarelo, a parte será desconectada de seu corpo e funcionara como mais um obstáculo
 
 
-<img width="755" height="483" alt="image" src="https://github.com/user-attachments/assets/8fa3112a-fcb7-4bef-91aa-ba2f68f83fe6" />
+<img width="658" height="329" alt="image" src="https://github.com/user-attachments/assets/590fadd8-842e-43a7-9589-a2dbfa1181cb" />
+
 
 
 ## Modo Hard ##
