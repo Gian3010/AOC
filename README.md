@@ -67,3 +67,5 @@ Além disso ao comer uma maçã (Agora da cor rosa para nao confundir com a cor 
 Ao reiniciar jogo tente sempre que possível dar um "reset" na área do teclado para evitar travamentos dependendo do seu computador
 
 <img width="866" height="362" alt="image" src="https://github.com/user-attachments/assets/50e48e9a-00c7-4d6b-842e-0fe0c95ce42e" />
+
+E evite clicar em alguma tecla logo após sua morte!
