@@ -511,8 +511,8 @@ exibir_msg:
     la   $a0, txt_replay
     syscall
     
-    # Delay extra de segurança antes de reiniciar (500ms)
-    # Isso evita conflito entre janelas no MARS
+    # Delay extra de segurança antes de reiniciar 
+    
     move $s7, $a0          # Salva resposta
     li   $v0, 32
     li   $a0, 500
