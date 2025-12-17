@@ -1,21 +1,17 @@
-# Snake MIPS - Versão Final "Anti-Crash Completa"
-# Correção: Travamento no Pop-up Branco (Pós-Morte) resolvido.
-# Lógica: Adicionado limite de loops na limpeza de buffer e delay de reinício.
-
 .data
-    # --- VARIÁVEIS DE ESTADO ---
+    #  VARIÁVEIS DE ESTADO
     var_pontos:      .word   0
     var_delay:       .word   60              # Delay inicial
     var_crescer:     .word   0
     var_imune:       .word   0
     var_modo:        .word   1               # 0 = Hard, 1 = Normal
 
-    # --- CONSTANTES DE CONFIGURAÇÃO ---
+    # CONSTANTES DE CONFIGURAÇÃO 
     MEM_VIDEO:       .word   0x10008000
     MASCARA_COR:     .word   0x00FFFFFF
     MASCARA_DIR:     .word   0xFF000000
 
-    # --- CORES ---
+    # CORES 
     COR_FUNDO:       .word   0x00000000      # Preto
     COR_PAREDE:      .word   0x009900CC      # Roxo Neon
     
@@ -27,19 +23,19 @@
     COR_BLOCO:       .word   0x00AAAAAA      # Cinza Claro
     COR_IMORTAL:     .word   0x00FFFF00      # Amarelo Ouro
     
-    # --- ITENS ---
+    #  ITENS 
     ITEM_PONTO:      .word   0x00FF3333      # Vermelho Claro
     ITEM_PONTO_HARD: .word   0x00FF0099      # Rosa Neon
     ITEM_GELO:       .word   0x0000CCFF      # Azul Ciano
     ITEM_ESTRELA:    .word   0x00FFCC00      # Laranja Dourado
 
-    # --- DIREÇÕES ---
+    # DIREÇÕES 
     VET_NORTE:       .word   0x01000000
     VET_SUL:         .word   0x02000000
     VET_OESTE:       .word   0x03000000
     VET_LESTE:       .word   0x04000000
 
-    # --- MENSAGENS ---
+    # MENSAGENS
     txt_modo:        .asciiz "Ativar MODO INFERNO (Hard)?\n(Paredes vermelhas, Maça rosa + Obstaculos)"
     txt_perdeu:      .asciiz "Fim de Jogo! Pontuacao Final: "
     txt_replay:      .asciiz "\nJogar novamente? (1 = Sim, 0 = Nao)"
@@ -215,7 +211,7 @@ colisao:
     lw   $t2, ITEM_ESTRELA
     beq  $t0, $t2, pegou_estrela
 
-    # --- COLISÕES ---
+    # COLISÕES 
     lw   $t2, COR_PAREDE
     beq  $t0, $t2, bateu_borda
     lw   $t2, COR_INFERNO_BRD
@@ -266,7 +262,7 @@ tp_direita:
     addi $s1, $s1, 248
     j    espaco_livre
 
-# --- EFEITOS ---
+# EFEITOS 
 pegou_comida:
     addi $s0, $s0, 10
     lw   $t0, var_crescer
@@ -292,10 +288,7 @@ pegou_gelo:
 pegou_estrela:
     addi $s0, $s0, 50
     addi $t0, $zero, 50
-    sw   $t0, var_imune
-    lw   $t1, var_crescer
-    addi $t1, $t1, 2
-    sw   $t1, var_crescer
+    sw   $t0, var_imune        # SOMENTE imunidade
     jal  gerar_loot
     j    renderizar_cabeca
 
@@ -343,7 +336,7 @@ pintar_final:
     sw   $t0, ($s1)
     j    nucleo_jogo
 
-# --- GERADORES COM ANTI-FREEZE ---
+# -GERADORES COM ANTI-FREEZE 
 gerar_loot:
     li   $v0, 42
     move $a0, $zero
@@ -414,7 +407,7 @@ loop_obst:
 abort_obst:
     jr   $ra
 
-# --- CENÁRIO ---
+# CENÁRIO 
 pintar_fundo:
     lw   $t0, MEM_VIDEO
     lw   $t1, COR_FUNDO
@@ -453,7 +446,7 @@ loop_vert:
     addi $t5, $t5, -1
     bnez $t5, loop_vert
     
-    # --- PAREDES DO MEIO (CORRIGIDAS) ---
+    # PAREDES DO MEIO
     lw   $t9, var_modo
     bnez $t9, fim_muros
     
@@ -484,7 +477,7 @@ hard_2:
 fim_muros:
     jr   $ra
 
-# --- GAME OVER SAFE (ANTI-TRAVAMENTO) ---
+# GAME OVER SAFE
 tela_gameover_safe:
     xor  $s3, $s3, $s3     # Para a cobra
 
