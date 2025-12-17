@@ -250,14 +250,17 @@ bateu_borda:
     lw   $t9, VET_OESTE
     beq  $s3, $t9, tp_direita
     addi $s1, $s1, -248
-    j    espaco_livre
+    j  espaco_livre
+
 
 tp_baixo:
     addi $s1, $s1, 7680
     j    espaco_livre
+
 tp_cima:
     addi $s1, $s1, -7680
     j    espaco_livre
+
 tp_direita:
     addi $s1, $s1, 248
     j    espaco_livre
@@ -286,40 +289,91 @@ pegou_gelo:
     j    renderizar_cabeca
 
 pegou_estrela:
+    # 1. Pontuação (+50)
     addi $s0, $s0, 50
-    addi $t0, $zero, 50
-    sw   $t0, var_imune        # SOMENTE imunidade
+
+    # 2. Ativar Imunidade (Define 50 frames de tempo)
+    # Usamos $t8 para evitar conflito com outros registradores
+    li   $t8, 50
+    sw   $t8, var_imune
+
+    # 3. GARANTIA ANTI-CRESCIMENTO
+    # Não carregamos nem salvamos nada em 'var_crescer' aqui.
+    # Assim, o rabo continua apagando normalmente.
+
+    # 4. Gera novo item e volta pro jogo
     jal  gerar_loot
     j    renderizar_cabeca
+    
+
 
 espaco_livre:
     lw   $t0, var_crescer
     bgtz $t0, processar_crescimento
     
-    # Apaga rabo
-    lw   $t5, ($s2)
+    # 1. Apaga o pixel atual do rabo
+    lw   $t5, ($s2)           # Lê a direção salva no rabo
     lw   $t6, MASCARA_DIR
-    and  $t5, $t5, $t6
+    and  $t5, $t5, $t6        # Isola a direção
     
     lw   $t7, COR_FUNDO
-    sw   $t7, ($s2)
+    sw   $t7, ($s2)           # Pinta de preto
     
-    # Move rabo
+    # 2. Calcula a TENTATIVA de nova posição do rabo
     lw   $t8, VET_NORTE
-    beq  $t5, $t8, rabo_norte
+    beq  $t5, $t8, tenta_norte
     lw   $t8, VET_SUL
-    beq  $t5, $t8, rabo_sul
+    beq  $t5, $t8, tenta_sul
     lw   $t8, VET_OESTE
-    beq  $t5, $t8, rabo_oeste
-    addi $s2, $s2, 4
+    beq  $t5, $t8, tenta_oeste
+    
+    addi $t9, $s2, 4          # Tenta Leste (padrão)
+    j    checar_colisao_rabo
+
+tenta_norte: addi $t9, $s2, -256
+             j    checar_colisao_rabo
+tenta_sul:   addi $t9, $s2, 256
+             j    checar_colisao_rabo
+tenta_oeste: addi $t9, $s2, -4
+
+checar_colisao_rabo:
+    # 3. Verifica se a nova posição ($t9) é uma parede
+    lw   $t0, ($t9)
+    lw   $t1, MASCARA_COR
+    and  $t0, $t0, $t1
+
+    lw   $t2, COR_PAREDE
+    beq  $t0, $t2, rabo_bateu_borda
+    lw   $t2, COR_INFERNO_BRD
+    beq  $t0, $t2, rabo_bateu_borda
+
+    # Se não for parede, movimento é normal
+    move $s2, $t9
     j    renderizar_cabeca
 
-rabo_norte: addi $s2, $s2, -256
-            j    renderizar_cabeca
-rabo_sul:   addi $s2, $s2, 256
-            j    renderizar_cabeca
-rabo_oeste: addi $s2, $s2, -4
-            j    renderizar_cabeca
+rabo_bateu_borda:
+    # 4. Aplica o teletransporte (Wrap-Around) no rabo
+    # Usa a mesma lógica e valores da cabeça
+    lw   $t8, VET_NORTE
+    beq  $t5, $t8, rabo_tp_baixo
+    lw   $t8, VET_SUL
+    beq  $t5, $t8, rabo_tp_cima
+    lw   $t8, VET_OESTE
+    beq  $t5, $t8, rabo_tp_direita
+
+    # Tentou Leste -> Vai para Esquerda
+    addi $s2, $t9, -248
+    j    renderizar_cabeca
+
+rabo_tp_baixo:
+    addi $s2, $t9, 7680    # Tentou Norte -> Vai para Baixo
+    j    renderizar_cabeca
+rabo_tp_cima:
+    addi $s2, $t9, -7680   # Tentou Sul -> Vai para Cima
+    j    renderizar_cabeca
+rabo_tp_direita:
+    addi $s2, $t9, 248     # Tentou Oeste -> Vai para Direita
+    j    renderizar_cabeca
 
 processar_crescimento:
     subi $t0, $t0, 1
@@ -344,9 +398,10 @@ gerar_loot:
     syscall
     
     slti $t0, $a0, 15
-    bnez $t0, item_tipo_gelo
-    slti $t0, $a0, 20
-    bnez $t0, item_tipo_estrela
+    bnez $t0, item_tipo_estrela   # 15% estrela (amarelo)
+    slti $t0, $a0, 30
+    bnez $t0, item_tipo_gelo      # 15% gelo
+
     
     lw   $t9, var_modo
     beqz $t9, maca_rosa
@@ -511,15 +566,27 @@ exibir_msg:
     la   $a0, txt_replay
     syscall
     
-    # Delay extra de segurança antes de reiniciar 
-    
+    # Delay extra de segurança antes de reiniciar (500ms)
+    # Isso evita conflito entre janelas no MARS
     move $s7, $a0          # Salva resposta
     li   $v0, 32
     li   $a0, 500
     syscall
     move $a0, $s7          # Restaura resposta
     
-    beqz $a0, main
+    beqz $a0, reiniciar_jogo
+
     
     li   $v0, 10
     syscall
+ reiniciar_jogo:
+    # Reset total de estado (ANTI-FREEZE)
+    sw   $zero, var_crescer
+    sw   $zero, var_imune
+    sw   $zero, var_pontos
+
+    li   $t0, 60
+    sw   $t0, var_delay
+
+    j    main
+
