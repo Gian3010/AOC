@@ -16,40 +16,45 @@ Execute o programa para começar a jogar! Use WASD para mover. Observe que, na p
 
 ## Mecânicas do jogo ##
 Entropia Progressiva (Risco): Ao consumir o alimento padrão (Vermelho) 🍎, há 25% de chance de um obstáculo permanente (Cinza) ser gerado aleatoriamente no mapa, tornando o cenário progressivamente mais complexo e "sujo".
+Comida Normal (Vermelho): +10 Pontos
 
-<img width="889" height="484" alt="image" src="https://github.com/user-attachments/assets/0a81eb2d-4cb1-41f6-ab99-4e0e0437d5e3" />
+É a pontuação base. O jogador ganha pontos moderados, mas "paga" o preço aumentando o risco (cria obstáculos e aumenta o corpo)
+
+<img width="638" height="322" alt="image" src="https://github.com/user-attachments/assets/3f8d5622-6499-45cd-8881-805d12645451" />
 
 
-Power-up de Controle (Laranja): Reduz temporariamente a velocidade de atualização do game loop (efeito slow motion), permitindo manobras de precisão em cenários densos. A velocidade é restaurada gradualmente.
 
-<img width="637" height="314" alt="image" src="https://github.com/user-attachments/assets/71d140b7-1a15-4026-ad35-032c81633c17" />
+Power-up de Controle (Azul): Reduz temporariamente a velocidade de atualização do game loop (efeito slow motion), permitindo manobras de precisão em cenários densos. A velocidade é restaurada gradualmente.
+Power-up de Lentidão (Azul): +5 Pontos
 
-Power-up de Invencibilidade (Magenta): Altera o estado da cobra (cabeça branca), permitindo que ela atravesse e destrua obstáculos, paredes e o próprio corpo, servindo como uma ferramenta estratégica de limpeza do mapa.
+Por que vale menos? Porque é um item de ajuda. Ele facilita o jogo deixando tudo em câmera lenta. O "pagamento" aqui é ganhar menos pontos em troca de sobrevivência.
 
-<img width="853" height="488" alt="image" src="https://github.com/user-attachments/assets/96594e10-4043-419c-9f4b-71503058e3ea" />
+
+<img width="641" height="317" alt="image" src="https://github.com/user-attachments/assets/7fb2a242-a2aa-4eab-ac21-c1b4a8468813" />
+
+
+Power-up de Invencibilidade (Amarelo): Altera o estado da cobra (cabeça branca), permitindo que ela atravesse e destrua obstáculos, paredes e o próprio corpo, servindo como uma ferramenta estratégica de limpeza do mapa.
+Power-up de Estrela (Amarelo): +50 Pontos
+
+Por que vale tanto? É o "Jackpot". Além de ser rara (15% de chance), ela incentiva o jogador a limpar o mapa agressivamente. É a recompensa máxima.
+
+<img width="640" height="313" alt="image" src="https://github.com/user-attachments/assets/6514c393-00b1-4607-8fd6-824eb94addcf" />
+
 
 Caso você acabe comendo seu próprio corpo enquanto estiver no efeito do power-up magenta, a parte será desconectada de seu corpo e funcionara como mais um obstáculo
 
 <img width="755" height="483" alt="image" src="https://github.com/user-attachments/assets/8fa3112a-fcb7-4bef-91aa-ba2f68f83fe6" />
 
 
+## Modo Hard ##
+Ou também conhecido como modo inferno, pela cor de suas paredes e seu nível de dificuldade. 
+Nesse modo temos 2 paredes na área central para dar um grau de desafio maior aos jogadores.
 
-## A Lógica da pontuação ##
+<img width="638" height="326" alt="image" src="https://github.com/user-attachments/assets/c0fe317d-0227-4bcf-91c3-e9958e3ba59c" />
 
-🍎 Comida Normal (Vermelho): +10 Pontos
 
-É a pontuação base. O jogador ganha pontos moderados, mas "paga" o preço aumentando o risco (cria obstáculos e aumenta o corpo).
+Além disso ao comer uma maçã (Agora da cor rosa para nao confundir com a cor da parede), serão gerados 2 obstáculos cinzas ao invés de 1 como é no modo normal.
 
-<img width="743" height="486" alt="image" src="https://github.com/user-attachments/assets/d7ce1e52-02ae-439e-9d95-8180c51b5111" />
+<img width="645" height="325" alt="image" src="https://github.com/user-attachments/assets/5660fc5a-156c-44a4-b36a-c959741aebfd" />
 
-🍊 Power-up de Lentidão (Laranja): +5 Pontos
-
-Por que vale menos? Porque é um item de ajuda. Ele facilita o jogo deixando tudo em câmera lenta. O "pagamento" aqui é ganhar menos pontos em troca de sobrevivência.
-
-<img width="786" height="382" alt="image" src="https://github.com/user-attachments/assets/38e38441-00e5-4212-874a-8bebeddd3fac" />
-
-🌟 Power-up de Estrela (Magenta): +50 Pontos
-
-Por que vale tanto? É o "Jackpot". Além de ser rara (15% de chance), ela incentiva o jogador a limpar o mapa agressivamente. É a recompensa máxima.
-<img width="916" height="481" alt="image" src="https://github.com/user-attachments/assets/6eb502f8-4715-438c-8f29-f3e3a12dd18f" />
 
