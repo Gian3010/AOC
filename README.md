@@ -22,6 +22,7 @@ Entropia Progressiva (Risco): Ao consumir o alimento padrão (Vermelho) 🍎, h�
 Comida Normal (Vermelho): +10 Pontos
 É a pontuação base. O jogador ganha pontos moderados, mas "paga" o preço aumentando o risco (cria obstáculos e aumenta o corpo)
 
+
 <img width="638" height="322" alt="image" src="https://github.com/user-attachments/assets/3f8d5622-6499-45cd-8881-805d12645451" />
 
 
@@ -38,10 +39,12 @@ Power-up de Invencibilidade (Amarelo): Altera o estado da cobra (cabeça branca)
 Power-up de Estrela (Amarelo): +50 Pontos
 Por que vale tanto? É o "Jackpot". Além de ser rara (15% de chance), ela incentiva o jogador a limpar o mapa agressivamente. É a recompensa máxima.
 
+
 <img width="640" height="313" alt="image" src="https://github.com/user-attachments/assets/6514c393-00b1-4607-8fd6-824eb94addcf" />
 
 
 Caso você acabe comendo seu próprio corpo enquanto estiver no efeito do power-up magenta, a parte será desconectada de seu corpo e funcionara como mais um obstáculo
+
 
 <img width="755" height="483" alt="image" src="https://github.com/user-attachments/assets/8fa3112a-fcb7-4bef-91aa-ba2f68f83fe6" />
 
@@ -50,11 +53,17 @@ Caso você acabe comendo seu próprio corpo enquanto estiver no efeito do power-
 Ou também conhecido como modo inferno, pela cor de suas paredes e seu nível de dificuldade. 
 Nesse modo temos 2 paredes na área central para dar um grau de desafio maior aos jogadores.
 
+
 <img width="638" height="326" alt="image" src="https://github.com/user-attachments/assets/c0fe317d-0227-4bcf-91c3-e9958e3ba59c" />
 
 
 Além disso ao comer uma maçã (Agora da cor rosa para nao confundir com a cor da parede), serão gerados 2 obstáculos cinzas ao invés de 1 como é no modo normal.
 
+
 <img width="645" height="325" alt="image" src="https://github.com/user-attachments/assets/5660fc5a-156c-44a4-b36a-c959741aebfd" />
 
+## Dica de bom uso ## 
 
+Ao reiniciar jogo tente sempre que possível dar um "reset" na área do teclado para evitar travamentos dependendo do seu computador
+
+<img width="866" height="362" alt="image" src="https://github.com/user-attachments/assets/50e48e9a-00c7-4d6b-842e-0fe0c95ce42e" />
