@@ -397,9 +397,9 @@ gerar_loot:
     li   $a1, 100
     syscall
     
-    slti $t0, $a0, 15
-    bnez $t0, item_tipo_estrela   # 15% estrela (amarelo)
-    slti $t0, $a0, 30
+    slti $t0, $a0, 5
+    bnez $t0, item_tipo_estrela   # 5% estrela (amarelo)
+    slti $t0, $a0, 20
     bnez $t0, item_tipo_gelo      # 15% gelo
 
     
