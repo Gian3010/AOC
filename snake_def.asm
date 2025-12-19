@@ -38,7 +38,7 @@
     # MENSAGENS
     txt_modo:        .asciiz "Ativar MODO INFERNO (Hard)?\n(Paredes vermelhas, Maça rosa + Obstaculos)"
     txt_perdeu:      .asciiz "Fim de Jogo! Pontuacao Final: "
-    txt_replay:      .asciiz "\nJogar novamente? (1 = Sim, 0 = Nao)"
+    txt_replay:      .asciiz "\nJogar novamente?"
 
 .text
 .globl main
